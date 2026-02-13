@@ -32,12 +32,12 @@ The purpose of this project is to demonstrate understanding of the Node.js event
 ### Weather API
 
 Open-Meteo API  
-https://api.open-meteo.com/
+https://api.open-meteo.com/v1/forecast?latitude=-25.74&longitude=28.19&current_weather=true
 
 ### News API
 
 GNews API  
-https://gnews.io/
+https://gnews.io/api/v4/search?q=Google&lang=en&max=5&apikey=c082a2abd3a1b6311cc913dd9c88fe28
 
 ---
 
