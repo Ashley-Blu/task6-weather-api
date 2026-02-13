@@ -1,6 +1,12 @@
 // src/asyncAwaitVersion.ts
 import axios from "axios";
-import { WEATHER_API, NEWS_API, displayResults, WeatherData, NewsData } from "./utils";
+import {
+  WEATHER_API,
+  NEWS_API,
+  displayResults,
+  WeatherData,
+  NewsData,
+} from "./utils";
 
 async function getWeather(): Promise<WeatherData> {
   const res = await axios.get(WEATHER_API);
@@ -9,7 +15,7 @@ async function getWeather(): Promise<WeatherData> {
 
 async function getNews(): Promise<NewsData[]> {
   const res = await axios.get(NEWS_API);
-  return res.data.posts;
+  return res.data.articles;
 }
 
 async function main() {
