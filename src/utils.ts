@@ -1,26 +1,32 @@
+// API endpoints
 export const WEATHER_API =
-  "https://api.open-meteo.com/v1/forecast?latitude=-25.74&longitude=28.19&current_weather=true"; //weather api - returns weather information
+  "https://api.open-meteo.com/v1/forecast?latitude=-25.74&longitude=28.19&current_weather=true"; 
+// Weather API - returns current weather information
+
 export const NEWS_API =
-  "https://gnews.io/api/v4/search?q=Google&lang=en&max=5&apikey=c082a2abd3a1b6311cc913dd9c88fe28"; //news api - Gives us news headlines
+  "https://gnews.io/api/v4/search?q=Google&lang=en&max=5&apikey=c082a2abd3a1b6311cc913dd9c88fe28"; 
+// News API - returns latest news headlines
 
-//The weather features we want to display
+// Type definition for weather data
 export type WeatherData = {
-  temperature: number;
-  windspeed: number;
-  weathercode: number;
-  winddirection: number;
-  time: number;
-  interval: number;
-  is_day: number;
+  temperature: number;    // Temperature in Celsius
+  windspeed: number;      // Wind speed in km/h
+  weathercode: number;    // Weather condition code
+  winddirection: number;  // Wind direction in degrees
+  time: number;           // Current UTC time from API
+  interval: number;       // Data update interval in seconds
+  is_day: number;         // 1 = Day, 0 = Night
 };
 
+// Type definition for news data
 export type NewsData = {
-  title: string;
-  description: string;
-  url: string;
-  publishedAt: string;
+  title: string;          // Headline title
+  description: string;    // Short description
+  url: string;            // Link to full article
+  publishedAt: string;    // Publication date
 };
 
+// Function to display results in the console
 export function displayResults(
   weather: WeatherData | null,
   news: NewsData[] | null,

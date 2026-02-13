@@ -1,4 +1,3 @@
-// src/promiseVersion.ts
 import axios from "axios";
 import {
   WEATHER_API,
@@ -8,23 +7,25 @@ import {
   NewsData,
 } from "./utils";
 
-// Fetch data returning a Promise
+// Function to fetch weather data, returns a Promise
 function fetchWeather(): Promise<WeatherData> {
   return axios.get(WEATHER_API).then((res) => res.data.current_weather);
 }
 
+// Function to fetch news data, returns a Promise
 function fetchNews(): Promise<NewsData[]> {
   return axios.get(NEWS_API).then((res) => res.data.articles);
 }
 
+// Run both requests in parallel and wait for both to complete
 Promise.all([fetchWeather(), fetchNews()])
   .then(([weather, news]) => {
     console.log(" Using Promise.all(): Both requests completed");
-    displayResults(weather, news);
+    displayResults(weather, news); // Display results once both requests finish
   })
-  .catch((err) => console.error(" Error:", err.message))
+  .catch((err) => console.error(" Error:", err.message)) // Handle any errors
   .finally(() => {
-    // Also demonstrate Promise.race()
+    // Demonstrate Promise.race() to see which request completes first
     console.log("\n Running Promise.race()...");
     Promise.race([fetchWeather(), fetchNews()])
       .then((result) => {
@@ -34,5 +35,5 @@ Promise.all([fetchWeather(), fetchNews()])
           console.log("Fastest:  News responded first!");
         }
       })
-      .catch((err) => console.error("Race error:", err.message));
+      .catch((err) => console.error("Race error:", err.message)); // Handle race errors
   });
